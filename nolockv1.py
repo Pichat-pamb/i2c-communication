@@ -96,12 +96,19 @@ def led_loc8(address, tagging):
     i2cbus.write_i2c_block_data(address, 0, data)
 
 led_loc1(0x10, 1)
+time.sleep(0.1)
 led_loc2(0x10, 1)
+time.sleep(0.1)
 led_loc3(0x10, 1)
+time.sleep(0.1)
 led_loc4(0x10, 1)
+time.sleep(0.1)
 led_loc5(0x10, 1)
+time.sleep(0.1)
 led_loc6(0x10, 1)
+time.sleep(0.1)
 led_loc7(0x10, 1)
+time.sleep(0.1)
 led_loc8(0x10, 1)
 
 # --------------------------------
