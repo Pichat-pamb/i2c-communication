@@ -1,3 +1,12 @@
+# --------------------------------
+# I2C transfer command python converting
+# using "i2ctransfer -y 1 w5@0x08 0x00 0x04 0xFF 0xFF 0x00" as a data format
+# use 3rd - 5th digits to get color from user by RGB HEX code
+# add optional command to select pattern Ex. "1 = 0, 0, 0", "2 = 255,0,0 (red)"
+# fix color in position by 01 == red 02 == blue etc;
+# led address
+# --------------------------------
+
 import time
 from smbus import SMBus
 
@@ -38,40 +47,19 @@ def led_loc(address, led_location, color_tagging):
     i2cbus.write_i2c_block_data(address, 0, data)
 
 
-# led location 0x10 on testing
-for i in range(8):
-    led_loc(16, i, 1)
-    time.sleep(0.1)
+#
+led_locations = [16, 17, 18]  # LED locations: 0x10, 0x11, 0x12
 
-# led location 0x11 on testing
-for i in range(8):
-    led_loc(17, i, 1)
-    time.sleep(0.1)
-
-# led location 0x12 on testing
-for i in range(8):
-    led_loc(18, i, 1)
-    time.sleep(0.1)
+# Turn on LEDs at each location
+for loc in led_locations:
+    for i in range(8):
+        led_loc(loc, i, 1)
+        time.sleep(0.1)
 
 time.sleep(1.5)
 
-# led location 0x10 off testing
-for i in range(8):
-    led_loc(16, i, 0)
-    time.sleep(0.1)
-
-# led location 0x11 off testing
-for i in range(8):
-    led_loc(17, i, 0)
-    time.sleep(0.1)
-
-# led location 0x12 off testing
-for i in range(8):
-    led_loc(18, i, 0)
-    time.sleep(0.1)
-
-
-# --------------------------------
-# fix color in position by 01 == red 02 == blue etc;
-# led address
-# --------------------------------
+# Turn off LEDs at each location
+for loc in led_locations:
+    for i in range(8):
+        led_loc(loc, i, 0)
+        time.sleep(0.1)
