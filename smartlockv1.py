@@ -49,11 +49,11 @@ def led_loc(address, led_location, color_tagging):
 
 # --------------------------------
 # define led address to display on main node
-led_locations = [16, 17, 18]  # LED locations: 0x10, 0x11, 0x12
+led_addresses = [16, 17, 18]  # LED locations: 0x10, 0x11, 0x12
 # --------------------------------
 
 # Turn on LEDs at each location
-for loc in led_locations:
+for loc in led_addresses:
     for i in range(8):
         led_loc(loc, i, 1)
         time.sleep(0.1)
@@ -61,7 +61,7 @@ for loc in led_locations:
 time.sleep(1.5)
 
 # Turn off LEDs at each location
-for loc in led_locations:
+for loc in led_addresses:
     for i in range(8):
         led_loc(loc, i, 0)
         time.sleep(0.1)
