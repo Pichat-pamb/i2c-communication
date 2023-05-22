@@ -9,7 +9,7 @@ def led_loc(address, led_location, color_tagging):
     data_list1 = [led_location]  # led bytes data to send
     if color_tagging == 0:
         data_list2 = [0, 0, 0]
-    elif color_tagging == 1:
+    else:
         if led_location == 0:
             data_list2 = [255, 0, 0]
         elif led_location == 1:
@@ -38,14 +38,38 @@ def led_loc(address, led_location, color_tagging):
     i2cbus.write_i2c_block_data(address, 0, data)
 
 
-led_loc(16, 0, 1)
-led_loc(16, 1, 1)
-led_loc(16, 2, 1)
-led_loc(16, 3, 1)
-led_loc(16, 4, 1)
-led_loc(16, 5, 1)
-led_loc(16, 6, 1)
-led_loc(16, 7, 1)
+# led location 0x10 on testing
+for i in range(8):
+    led_loc(16, i, 1)
+    time.sleep(0.1)
+
+# led location 0x11 on testing
+for i in range(8):
+    led_loc(17, i, 1)
+    time.sleep(0.1)
+
+# led location 0x12 on testing
+for i in range(8):
+    led_loc(18, i, 1)
+    time.sleep(0.1)
+
+time.sleep(1.5)
+
+# led location 0x10 off testing
+for i in range(8):
+    led_loc(16, i, 0)
+    time.sleep(0.1)
+
+# led location 0x11 off testing
+for i in range(8):
+    led_loc(17, i, 0)
+    time.sleep(0.1)
+
+# led location 0x12 off testing
+for i in range(8):
+    led_loc(18, i, 0)
+    time.sleep(0.1)
+
 
 # --------------------------------
 # fix color in position by 01 == red 02 == blue etc;
