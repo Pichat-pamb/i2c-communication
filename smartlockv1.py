@@ -47,8 +47,10 @@ def led_loc(address, led_location, color_tagging):
     i2cbus.write_i2c_block_data(address, 0, data)
 
 
-#
+# --------------------------------
+# define led address to display on main node
 led_locations = [16, 17, 18]  # LED locations: 0x10, 0x11, 0x12
+# --------------------------------
 
 # Turn on LEDs at each location
 for loc in led_locations:
