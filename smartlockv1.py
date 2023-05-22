@@ -41,7 +41,7 @@ def led_loc(address, led_location, color_tagging):
 
     # --------------------------------
     # display debugging
-    print(data)
+    print(loc, data)
     # --------------------------------
 
     i2cbus.write_i2c_block_data(address, 0, data)
@@ -56,7 +56,7 @@ led_addresses = [16, 17, 18]  # LED locations: 0x10, 0x11, 0x12
 for loc in led_addresses:
     for i in range(8):
         led_loc(loc, i, 1)
-        time.sleep(0.1)
+        time.sleep(0.01)
 
 time.sleep(1.5)
 
@@ -64,4 +64,4 @@ time.sleep(1.5)
 for loc in led_addresses:
     for i in range(8):
         led_loc(loc, i, 0)
-        time.sleep(0.1)
+        time.sleep(0.01)
