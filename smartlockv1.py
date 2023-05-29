@@ -1,6 +1,6 @@
 # --------------------------------
 # I2C transfer command python converting
-# using "i2ctransfer -y 1 w5@0x08 0x00 0x04 0xFF 0xFF 0x00" as a data format
+# using "i2ctransfer -y 1 w5@0x08 0x00 0x04 0x00 0x00 0x00" as a data format
 # use 3rd - 5th digits to get color from user by RGB HEX code
 # add optional command to select pattern Ex. "1 = 0, 0, 0", "2 = 255,0,0 (red)"
 # fix color in position by 01 == red 02 == blue etc;
@@ -37,7 +37,7 @@ def led_loc(address, led_location, color_tagging):
             data_list2 = [255, 255, 255]
 
     data = data_list1 + data_list2  # Bytes data to display
-    time.sleep(0.15)  # display delay
+    time.sleep(0.15)  # delay of data transfer
 
     # --------------------------------
     # display debugging
