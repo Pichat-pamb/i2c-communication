@@ -11,9 +11,8 @@ import time
 from smbus import SMBus
 
 i2cbus = SMBus(1)  # Specify the I2C bus number (e.g., 1 for /dev/i2c-1)
+
 # Set the slave address by static addr
-
-
 def led_loc(address, led_location, color_tagging):
     data_list1 = [led_location]  # led bytes data to send
     if color_tagging == 0:
